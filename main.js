@@ -75,6 +75,29 @@ function getData( name ) {
 
 
 
+
+            function geefWeer(beschrijvingWeer){
+
+                var cnts = beschrijvingWeer.reduce( function (obj, val) {
+                    obj[val] = (obj[val] || 0) + 1;
+                    return obj;
+                }, {} );
+                //Use the keys of the object to get all the values of the array
+                //and sort those keys by their counts
+                var sorted = Object.keys(cnts).sort( function(a,b) {
+                    return cnts[b] - cnts[a];
+                });
+
+                return sorted[0];
+            }
+
+            let beschrijvingWeer1 = geefWeer(descrip1);
+            let beschrijvingWeer2 = geefWeer(descrip2);
+            let beschrijvingWeer3 = geefWeer(descrip3);
+            let beschrijvingWeer4 = geefWeer(descrip4);
+            let beschrijvingWeer5 = geefWeer(descrip5);
+
+
             document.getElementById("dayOne").innerHTML = averageTemp(day1);
             document.getElementById("dayTwo").innerHTML = averageTemp(day2);
             document.getElementById("dayThree").innerHTML = averageTemp(day3);
@@ -82,25 +105,13 @@ function getData( name ) {
             document.getElementById("dayFive").innerHTML = averageTemp(day5);
 
 
-            document.getElementById("description1").innerHTML = descrip1;
-            document.getElementById("description2").innerHTML = descrip2;
-            document.getElementById("description3").innerHTML = descrip3;
-            document.getElementById("description4").innerHTML = descrip4;
-            document.getElementById("description5").innerHTML = descrip5;
+            document.getElementById("description1").innerHTML = beschrijvingWeer1;
+            document.getElementById("description2").innerHTML = beschrijvingWeer2;
+            document.getElementById("description3").innerHTML = beschrijvingWeer3;
+            document.getElementById("description4").innerHTML = beschrijvingWeer4;
+            document.getElementById("description5").innerHTML = beschrijvingWeer5;
 
 
-
-           var cnts = beschrijving.reduce( function (obj, val) {
-                obj[val] = (obj[val] || 0) + 1;
-                return obj;
-            }, {} );
-            //Use the keys of the object to get all the values of the array
-            //and sort those keys by their counts
-            var sorted = Object.keys(cnts).sort( function(a,b) {
-                return cnts[b] - cnts[a];
-            });
-            console.log(sorted);
-            console.log(sorted[0]);
 
 
 

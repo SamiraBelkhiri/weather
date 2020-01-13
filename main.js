@@ -46,6 +46,8 @@ function getData( name ) {
         .then(function(data) {
             console.log(data['list']);
 
+            let averageTemp = array => Math.floor((array.reduce((a,b) => a + b, 0) / array.length));
+
             let allTemp = [];
             let beschrijving = [];
 
@@ -65,9 +67,31 @@ function getData( name ) {
            let day5= allTemp.slice(32,40);
 
 
-           let averageTemp = array => Math.floor((array.reduce((a,b) => a + b, 0) / array.length));
+           let descrip1 = beschrijving.slice(0,8);
+           let descrip2 = beschrijving.slice(8,16);
+           let descrip3 = beschrijving.slice(16,24);
+           let descrip4 = beschrijving.slice(24,32);
+           let descrip5 = beschrijving.slice(32,40);
 
 
+
+
+
+
+
+
+            document.getElementById("dayOne").innerHTML = averageTemp(day1);
+            document.getElementById("dayTwo").innerHTML = averageTemp(day2);
+            document.getElementById("dayThree").innerHTML = averageTemp(day3);
+            document.getElementById("dayFour").innerHTML = averageTemp(day4);
+            document.getElementById("dayFive").innerHTML = averageTemp(day5);
+
+
+            document.getElementById("description1").innerHTML = descrip1;
+            document.getElementById("description2").innerHTML = descrip2;
+            document.getElementById("description3").innerHTML = descrip3;
+            document.getElementById("description4").innerHTML = descrip4;
+            document.getElementById("description5").innerHTML = descrip5;
 
 
             console.log(averageTemp(day1));

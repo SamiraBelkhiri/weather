@@ -75,11 +75,6 @@ function getData( name ) {
 
 
 
-
-
-
-
-
             document.getElementById("dayOne").innerHTML = averageTemp(day1);
             document.getElementById("dayTwo").innerHTML = averageTemp(day2);
             document.getElementById("dayThree").innerHTML = averageTemp(day3);
@@ -94,7 +89,28 @@ function getData( name ) {
             document.getElementById("description5").innerHTML = descrip5;
 
 
+
+           var cnts = beschrijving.reduce( function (obj, val) {
+                obj[val] = (obj[val] || 0) + 1;
+                return obj;
+            }, {} );
+            //Use the keys of the object to get all the values of the array
+            //and sort those keys by their counts
+            var sorted = Object.keys(cnts).sort( function(a,b) {
+                return cnts[b] - cnts[a];
+            });
+            console.log(sorted);
+            console.log(sorted[0]);
+
+
+
+
+
             console.log(averageTemp(day1));
+
+
+
+
 
         })
         .catch(function() {

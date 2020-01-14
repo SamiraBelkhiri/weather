@@ -1,8 +1,76 @@
+body{
+    background-size: cover;
+}
+h1{
+    text-align: center;
+    font-family: Arial;
+    background-color: darkcyan;
+}
+
+label{
+    color: white;
+}
+
+
+
 .row .col {
     border: 1px solid #000;
 }
 #one, #two, #three, #four, #five{
 
     text-align: center;
+    background-color: darkcyan;
+    color: white;
+    padding-bottom: 20px;
 
+}
+#one{
+    padding: 50px;
+}
+#two, #three, #three, #four, #five{
+
+}
+
+button {
+    border-radius: 8px;
+    background-color: darkcyan;
+    border: none;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 28px;
+    padding: 5px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+button:hover span {
+    padding-right: 25px;
+}
+
+button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+#inputField{
+    text-align: center;
+    background-color: #63C3D1;
+    padding: 20px;
 }

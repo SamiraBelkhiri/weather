@@ -46,6 +46,10 @@ function getData( name ) {
         .then(function(data) {
             console.log(data['list']);
 
+
+
+
+
             let averageTemp = array => Math.floor((array.reduce((a,b) => a + b, 0) / array.length)) + '&#176';
 
             let allTemp = [];
@@ -165,6 +169,8 @@ function getData( name ) {
 */
 
 
+
+
         })
         .catch(function() {
             // catch any errors
@@ -175,10 +181,20 @@ function getData( name ) {
 }
 
 
+async function backgroundImage() { //function to set background according to the city entered
+    let response = await fetch('https://api.unsplash.com/search/photos?query=$'+backgroundCity.value+'&client_id=8b3303518e733b03bb9fbe890041915da381de31ef0602ad71dc8adfd4b79f83');
+    let data = await response.json();
+    let countryImage = data['results'][1]['urls']['regular'];
+    document.body.style.backgroundImage = `url(${countryImage})`;
+
+}
+let backgroundCity = document.getElementById("cityName");
+
 
 document.getElementById("callApi").addEventListener("click",function () {
     cityName = document.getElementById("cityName").value;
     getData(cityName);
+    backgroundImage();
 }) ;
 
 

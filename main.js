@@ -46,7 +46,7 @@ function getData( name ) {
         .then(function(data) {
             console.log(data['list']);
 
-            let averageTemp = array => Math.floor((array.reduce((a,b) => a + b, 0) / array.length));
+            let averageTemp = array => Math.floor((array.reduce((a,b) => a + b, 0) / array.length)) + '&#176';
 
             let allTemp = [];
             let beschrijving = [];
@@ -110,8 +110,6 @@ function getData( name ) {
             document.getElementById("description3").innerHTML = beschrijvingWeer3;
             document.getElementById("description4").innerHTML = beschrijvingWeer4;
             document.getElementById("description5").innerHTML = beschrijvingWeer5;
-
-
 
 
 

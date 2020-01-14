@@ -114,11 +114,55 @@ function getData( name ) {
 
 
 
-
             console.log(averageTemp(day1));
 
 
 
+
+            var d = new Date();
+            var weekday = new Array(7);
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+
+            var n = weekday[d.getDay()];
+            console.log(n);
+
+            document.getElementById("daydate1").innerHTML = weekday[d.getDay()];
+            document.getElementById("daydate2").innerHTML = weekday[d.getDay()+1];
+            document.getElementById("daydate3").innerHTML = weekday[d.getDay()+2];
+            document.getElementById("daydate4").innerHTML = weekday[d.getDay()+3];
+            document.getElementById("daydate5").innerHTML = weekday[d.getDay()+4];
+
+        /*
+         // found on stackoverflow and trying to implement the code
+
+         var allDays= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var d = new Date(data.list[0].dt * 1000); // to get the DateTime.
+            var dayName = allDays[d.getDay()]; // It will give day index, and based on index we can get day name from the array.
+            console.log(dayName)
+
+
+
+
+            var wf = "";
+            wf += "<h2>" + data.city.name + "</h2>"; // City (displays once)
+            $.each(data.list, function(index, val) {
+                wf += "<p>" // Opening paragraph tag
+                wf += "<b>Day " + index + "</b>: " // Day
+                wf += "<b>DateTime " + new Date(val.dt*1000).toISOString() + "</b>: " // DateTime
+                wf += val.main.temp + "&degC" // Temperature
+                wf += "<span> " + val.weather[0].description + "</span>"; // Description
+                wf += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>" // Icon
+                wf += "</p>" // Closing paragraph tag
+            });
+            $("#showWeatherForcast").html(wf);
+
+*/
 
 
         })

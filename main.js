@@ -124,6 +124,7 @@ function getData( name ) {
             weekday[4] = "Thursday";
             weekday[5] = "Friday";
             weekday[6] = "Saturday";
+            weekday[7] = "Sunday";
 
             var n = weekday[d.getDay()];
             console.log(n);

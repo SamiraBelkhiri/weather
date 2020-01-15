@@ -34,11 +34,7 @@ $('#submitWeather').click(function () {
 //trying another way cause the ajax is not working...
 
 
-
-let cityName ='';
-
-
-function getData( name ) {
+function getData( cityName ) {
     var key = 'fb5f4c0b40f1db9cb2d39540974f5684';
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName+ '&units=metric&appid=' + key)
         .then(function(resp) { return resp.json() }) // Convert data to json
@@ -52,26 +48,26 @@ function getData( name ) {
             let beschrijving = [];
 
             for (let i = 0; i < 40; i++) {
-          allTemp.push(data.list[i].main.temp);
-          beschrijving.push(data.list[i].weather[0].description);
+                allTemp.push(data.list[i].main.temp);
+                beschrijving.push(data.list[i].weather[0].description);
 
             }
             console.log(beschrijving);
             console.log(allTemp);
 
 //elke dag bereken per 8 getallen in de array
-           let day1= allTemp.slice(0,8);
-           let day2= allTemp.slice(8,16);
-           let day3= allTemp.slice(16,24);
-           let day4= allTemp.slice(24,32);
-           let day5= allTemp.slice(32,40);
+            let day1= allTemp.slice(0,8);
+            let day2= allTemp.slice(8,16);
+            let day3= allTemp.slice(16,24);
+            let day4= allTemp.slice(24,32);
+            let day5= allTemp.slice(32,40);
 
 
-           let descrip1 = beschrijving.slice(0,8);
-           let descrip2 = beschrijving.slice(8,16);
-           let descrip3 = beschrijving.slice(16,24);
-           let descrip4 = beschrijving.slice(24,32);
-           let descrip5 = beschrijving.slice(32,40);
+            let descrip1 = beschrijving.slice(0,8);
+            let descrip2 = beschrijving.slice(8,16);
+            let descrip3 = beschrijving.slice(16,24);
+            let descrip4 = beschrijving.slice(24,32);
+            let descrip5 = beschrijving.slice(32,40);
 
 
 
@@ -97,6 +93,8 @@ function getData( name ) {
             let beschrijvingWeer4 = geefWeer(descrip4);
             let beschrijvingWeer5 = geefWeer(descrip5);
 
+            // better to use for loop for everything!!!
+            //work on that later!!
 
             document.getElementById("dayOne").innerHTML = averageTemp(day1);
             document.getElementById("dayTwo").innerHTML = averageTemp(day2);
@@ -135,31 +133,31 @@ function getData( name ) {
             document.getElementById("daydate4").innerHTML = weekday[d.getDay()+3];
             document.getElementById("daydate5").innerHTML = weekday[d.getDay()+4];
 
-        /*
-         // found on stackoverflow and trying to implement the code
+            /*
+             // found on stackoverflow and trying to implement the code
 
-         var allDays= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            var d = new Date(data.list[0].dt * 1000); // to get the DateTime.
-            var dayName = allDays[d.getDay()]; // It will give day index, and based on index we can get day name from the array.
-            console.log(dayName)
-
-
+             var allDays= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                var d = new Date(data.list[0].dt * 1000); // to get the DateTime.
+                var dayName = allDays[d.getDay()]; // It will give day index, and based on index we can get day name from the array.
+                console.log(dayName)
 
 
-            var wf = "";
-            wf += "<h2>" + data.city.name + "</h2>"; // City (displays once)
-            $.each(data.list, function(index, val) {
-                wf += "<p>" // Opening paragraph tag
-                wf += "<b>Day " + index + "</b>: " // Day
-                wf += "<b>DateTime " + new Date(val.dt*1000).toISOString() + "</b>: " // DateTime
-                wf += val.main.temp + "&degC" // Temperature
-                wf += "<span> " + val.weather[0].description + "</span>"; // Description
-                wf += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>" // Icon
-                wf += "</p>" // Closing paragraph tag
-            });
-            $("#showWeatherForcast").html(wf);
 
-*/
+
+                var wf = "";
+                wf += "<h2>" + data.city.name + "</h2>"; // City (displays once)
+                $.each(data.list, function(index, val) {
+                    wf += "<p>" // Opening paragraph tag
+                    wf += "<b>Day " + index + "</b>: " // Day
+                    wf += "<b>DateTime " + new Date(val.dt*1000).toISOString() + "</b>: " // DateTime
+                    wf += val.main.temp + "&degC" // Temperature
+                    wf += "<span> " + val.weather[0].description + "</span>"; // Description
+                    wf += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>" // Icon
+                    wf += "</p>" // Closing paragraph tag
+                });
+                $("#showWeatherForcast").html(wf);
+
+    */
 
 
         })
@@ -184,7 +182,7 @@ let backgroundCity = document.getElementById("cityName");
 
 
 document.getElementById("callApi").addEventListener("click",function () {
-    cityName = document.getElementById("cityName").value;
+    let cityName = document.getElementById("cityName").value;
     getData(cityName);
     backgroundImage();
 }) ;
@@ -193,5 +191,5 @@ document.getElementById("callApi").addEventListener("click",function () {
 
 
 //window.onload = function() {
-    //weatherBalloon("antwerp" );
+//weatherBalloon("antwerp" );
 //}
